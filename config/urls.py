@@ -17,6 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from libreria import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('libros/', views.ListarLibros.as_view(), name='lista_libros'),
+    path('libros/<int:pk>/', views.DetalleLibro.as_view(), name='detalle_libro'),
+    path('libros/nuevo/', views.CrearLibro.as_view(), name='crear_libro'),
+    path('libros/<int:pk>/editar/', views.ActualizarLibros.as_view(), name='editar_libro'),
+    path('libros/<int:pk>/eliminar/', views.EliminarLibro.as_view(), name='eliminar_libro'),
 ]
